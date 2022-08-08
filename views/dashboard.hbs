@@ -1,6 +1,14 @@
 
 
-<h1>Welcome {{user.firstName}}</h1>
+<h1>Welcome <a href="/edit-user/{{_id}}"></a>{{firstName}}</a></h1>
+
+
+
+{{#each entries}}
+
+{{/each}}
+
+
 
 
 <button> <a href='/logout'>Logout</a></button>

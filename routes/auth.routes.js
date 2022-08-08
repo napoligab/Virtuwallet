@@ -68,9 +68,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
           password: hashedPassword,
         });
       })
-      .then((user) => {
+      .then(() => {
         // Bind the user to the session object
-        req.session.user = user; 
         return res.redirect("/login");
       })
       .catch((error) => {
@@ -132,7 +131,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/dashboard/:userId");
+        return res.redirect(`/dashboard/${user._id}`);
       });
     })
 

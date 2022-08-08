@@ -28,4 +28,4 @@ const entrySchema = new Schema(
 
 const Entry = model('Entry', entrySchema);
 
-module.exports = User;
+module.exports = Entry;
