@@ -1,18 +1,19 @@
 <form action='/dashboard' method='POST'>
-  <label for=''>Title:</label>
-  <input type='text' name='title' id='' />
-  <label for=''>Genre:</label>
-  <input type='text' name='genre' id='' />
-  <label for=''>Plot:</label>
-  <input type='text' name='plot' id='' />
 
-  {{! array of celebrities in the cast }}
-  <label for=''>Cast:</label>
-  <select name='cast' multiple>
-    {{#each celebritiesFromDB}}
-      <option value='{{this._id}}'>{{this.name}}</option>
-    {{/each}}
-  </select>
+  <label for=''>Date:</label>
+  <input type='date' name='date' id='date' />
+
+  <label for=''>Amount:</label>
+  <input type='number' name='amount' id='amount' />
+
+  <label for=''>Category:</label>
+  <input type='text' name='category' id='category' />
+
+  <label for=''>Location:</label>
+  <input type='text' name='location' id='location' />
+
+  <label for=''>Description:</label>
+  <input type='text' name='description' id='description' />
 
   <button type='submit'>Create movie</button>
 </form>
