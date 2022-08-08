@@ -17,16 +17,19 @@ router.get('/dashboard/:userId', isLoggedIn, (req, res, next) => {
 });
 
 router.get('/new-entry', isLoggedIn, (req, res, next) => {
-  res.render('entries/new-entry');
+  const user = req.session.user;
+  res.render('entries/new-entry', { user });
 });
 
-router.post('/', isLoggedIn, (req, res, next) => {
-  Entry.create(req.body).then((newEntry) => {
-    console.log(newEntry);
-    res
-      .redirect(`/dashboard/${user._id}`)
-      .catch((err) => console.log('Error while creating a movie: ', err));
-  });
+router.post('/new-entry', isLoggedIn, (req, res, next) => {
+  const { date, amount, category, location, description } = req.body;
+  const user = req.session.user;
+  Entry.create({ date, amount, category, location, description })
+    .then((newEntry) => {
+      console.log(newEntry);
+      res.redirect(`/dashboard/${user._id}`);
+    })
+    .catch((err) => console.log('Error while creating an entry: ', err));
 });
 /* 
 movieRouter.post('/', (req, res, next) => {
@@ -47,5 +50,9 @@ router.get('/edit-entry', isLoggedIn, (req, res, next) => {
 /* router.post("/new-entry", isLoggedIn, (req, res, next) => {
     Entry.create({})
 }) */
+
+router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {});
+
+router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {});
 
 module.exports = router;
