@@ -4,11 +4,6 @@ const router = require("express").Router();
 const User = require("../models/User.model")
 const Entry = require("../models/Entry.model")
 
-/* router.get("/dashboard", isLoggedIn, (req, res, next) => {
-    const user = req.session.user
-    res.render("dashboard", {user});
-}); */
-
 router.get("/dashboard/:userId", isLoggedIn, (req, res, next) => {
     const {userId} = req.params;
 
@@ -20,6 +15,14 @@ router.get("/dashboard/:userId", isLoggedIn, (req, res, next) => {
     })
     .catch(err=> next(err))
 });
+
+router.get("/new-entry", isLoggedIn, (req, res, next) => { 
+    res.render("new-entry");
+})
+
+/* router.post("/new-entry", isLoggedIn, (req, res, next) => {
+    Entry.create({})
+}) */
 
 
 module.exports = router;
