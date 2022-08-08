@@ -8,10 +8,6 @@ const userSchema = new Schema(
       require: true,
       unique: true,
     },
-<<<<<<< HEAD
-
-=======
->>>>>>> c30af80d769e878ef18c365d47baad8bc3adb95e
     firstName: {
       type: String,
       trim: true,
