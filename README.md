@@ -57,7 +57,7 @@ Expenses model
 {
   date: Date,
   amount: Number,
-  category: [String],
+  category: [String],  //enum
   location: String
 }
 
@@ -93,9 +93,9 @@ Expenses model
 
 ### Slides
 
-The url to your presentation slides
-
 [Slides Link]() TBD
+
+<br>
 
 ### Contributors
 
