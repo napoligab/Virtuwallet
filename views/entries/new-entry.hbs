@@ -1,19 +1,19 @@
-<form action="/dashboard/{{_id}}" method='POST'>
+<form action='/new-entry' method='POST'>
 
-  <label for='name'>Date:</label>
+  <label for='date'>Date:</label>
   <input type='date' name='date' id='date' />
 
   <label for='amount'>Amount:</label>
   <input type='number' name='amount' id='amount' />
 
   <label for='category'>Category:</label>
-  <input type='text' name='category' id='category' />
+  <input type='select' name='category' id='category' />
 
   <label for='location'>Location:</label>
   <input type='text' name='location' id='location' />
 
-  <label for='description'>Description:</label>
-  <input type='text' name='description' id='description' />
+  <label for='type'>Type:</label>
+  <input type='select' name='description' id='description' />
 
   <button type='submit'>Create entry</button>
 </form>

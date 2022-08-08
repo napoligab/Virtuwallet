@@ -18,8 +18,9 @@ const entrySchema = new Schema(
     location: {
       type: String,
     },
-    description: {
+    type: {
       type: String,
+      enum: ['income', 'expense'],
     },
   },
   {
