@@ -26,11 +26,17 @@ router.post('/new-entry', isLoggedIn, (req, res, next) => {
   const user = req.session.user;
   Entry.create({ date, amount, category, location, type })
     .then((newEntry) => {
-      User.findByIdAndUpdate(user._id, {
-        $push: { entries: newEntry._id }
-      });
+      return User.findByIdAndUpdate(
+        user._id,
+        {
+          $push: { entries: newEntry._id },
+        },
+        { new: true }
+      );
     })
-    .then(() => res.redirect(`/dashboard/${user._id}`))
+    .then((user) => {
+      res.redirect(`/dashboard/${user._id}`);
+    })
     .catch((err) => console.log('Error while creating an entry: ', err));
 });
 
@@ -58,24 +64,29 @@ movieRouter.post('/', (req, res, next) => {
   }) */
 
 router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
+<<<<<<< HEAD
  const {userId} = req.params;
  const user = req.session.user;
  User.findById(userId)
    .then((user) => res.render('entries/edit-entry', user))
    .catch((err) => next(err));
+=======
+  const { userId } = req.params;
+  const user = req.session.user;
+  User.findById(userId).then((user) => res.render('entries/edit-entry', user));
+  console.log('pagina encontrada').catch((err) => next(err));
+>>>>>>> 1b8c8919212b174fd141593da2fdea816467ab3b
 });
 
+router.post('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
+  const { userId } = req.params;
+  const { date, amount, category, location, type } = req.body;
+  const user = req.session.user;
 
- router.post('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
-    const {userId} = req. params;
-    const { date, amount, category, location, type } = req.body;
-    const user = req.session.user;
-   
-    Entry.findByIdAndUpdate(userId, {date, amount, category, location, type})
-   .then(() => res.redirect(`/dashboard/${user._id}`))
-   .catch((err) => next(err));
- })
-
+  Entry.findByIdAndUpdate(userId, { date, amount, category, location, type })
+    .then(() => res.redirect(`/dashboard/${user._id}`))
+    .catch((err) => next(err));
+});
 
 /* router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
     router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
