@@ -2,7 +2,7 @@
 
 <h1>Welcome <a href="/edit-user/{{_id}}"></a>{{firstName}}</a></h1>
 
-<button><a href="/new-entry"> Add entry</a> </button>
+<button class="btn"><a href="/new-entry"> Add entry</a> </button>
 
 {{#each entries}}
 <p>{{this.date}} </p>
@@ -10,6 +10,9 @@
 <p>{{this.category}} </p>
 <p>{{this.location}} </p>
 <p>{{this.type}} </p>
+
+<button class="btn"><a href="//edit-entry/{{_id}}"> Edit entry</a> </button>
+<button class="btn"><a href="/delete-entry({{_id}}"> Delete entry</a> </button>
 
 {{/each}}
 
