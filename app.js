@@ -39,6 +39,7 @@ app.use('/', authRoutes);
 const dashboard = require('./routes/dashboard.routes');
 app.use('/', dashboard);
 
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
 

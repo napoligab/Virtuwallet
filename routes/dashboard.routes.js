@@ -22,12 +22,12 @@ router.get('/new-entry', isLoggedIn, (req, res, next) => {
 });
 
 router.post('/new-entry', isLoggedIn, (req, res, next) => {
-  const { date, amount, category, location, description } = req.body;
+  const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
-  Entry.create({ date, amount, category, location, description })
+  Entry.create({ date, amount, category, location, type })
     .then((newEntry) => {
       User.findByIdAndUpdate(user._id, {
-        $push: { entries: newEntry._id },
+        $push: { entries: newEntry._id }
       });
     })
     .then(() => res.redirect(`/dashboard/${user._id}`))
@@ -58,15 +58,46 @@ movieRouter.post('/', (req, res, next) => {
   }) */
 
 router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
-  res.render('entries/edit-entry');
+ const {userId} = req.params;
+ const user = req.session.user;
+ User.findById(userId)
+   .then((user) => res.render('entries/edit-entry', user))
+   console.log('pagina encontrada')
+   .catch((err) => next(err));
 });
 
-/* router.post("/new-entry/:userId", isLoggedIn, (req, res, next) => {
-    Entry.create({})
-}) */
 
-router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {});
+ router.post('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
+    const {userId} = req. params;
+    const { date, amount, category, location, type } = req.body;
+    const user = req.session.user;
+   
+    Entry.findByIdAndUpdate(userId, {date, amount, category, location, type})
+   .then(() => res.redirect(`/dashboard/${user._id}`))
+   .catch((err) => next(err));
+ })
 
-router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {});
+
+/* router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
+    router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
+        const {userId} = req.params;
+        const user = req.session.user;
+        User.findById(userId)
+          .then((user) => res.render('entries/edit-entry', user))
+          console.log('pagina encontrada')
+          .catch((err) => next(err));
+       });
+});
+
+router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
+
+    const {userId} = req. params;
+    const { date, amount, category, location, type } = req.body;
+    const user = req.session.user;
+   
+    Entry.findByIdAndUpdate(userId, {date, amount, category, location, type})
+   .then(() => res.redirect(`/dashboard/${user._id}`))
+   .catch((err) => next(err));
+ }); */
 
 module.exports = router;
