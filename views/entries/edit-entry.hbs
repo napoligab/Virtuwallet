@@ -1,0 +1,21 @@
+<h1>Edit Entry</h1>
+
+<form action="/edit-entry/{{_id}}" method='POST'>
+
+  <label for='date'>Date:</label>
+  <input type='date' name='date' id='date' value="{{this.date}}"/>
+
+  <label for='amount'>Amount:</label>
+  <input type='number' name='amount' id='amount' value="{{this.amount}}" />
+
+  <label for='category'>Category:</label>
+  <input type='text' name='category' id='category' value="{{this.category}}" />
+
+  <label for='location'>Location:</label>
+  <input type='text' name='location' id='location' value="{{this.location}}" />
+
+   <label for='type'>Type:</label>
+   <input type='text' name='type' id='type' value="{{this.type}}"/>
+
+
+  <button class="btn" type='submit'>Update Entry</button>
