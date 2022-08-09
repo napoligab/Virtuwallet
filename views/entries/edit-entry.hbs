@@ -9,13 +9,24 @@
   <input type='number' name='amount' id='amount' value="{{this.amount}}" />
 
   <label for='category'>Category:</label>
-  <input type='text' name='category' id='category' value="{{this.category}}" />
+  <select name="category" id="category" required>
+  <option value="education">Education</option>
+  <option value="health">Health</option>
+  <option value="general">General</option>
+  <option value="food">Food</option>
+  <option value="leisure">Leisure</option>
+  <option value="others">Others</option>
+</select>
+
+ <label for='type'>Type:</label>
+   <select name='type' name='type' id='type'required/>
+   <option value="income">Income</option>
+   <option value="expense">Expense</option>
+   </select>
 
   <label for='location'>Location:</label>
-  <input type='text' name='location' id='location' value="{{this.location}}" />
+  <input type="text" name='location' id='location' value="{{this.location}}" />
 
-   <label for='type'>Type:</label>
-   <input type='text' name='type' id='type' value="{{this.type}}"/>
 
 
   <button class="btn" type='submit'>Update Entry</button>

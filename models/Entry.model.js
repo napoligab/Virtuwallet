@@ -4,15 +4,15 @@ const entrySchema = new Schema(
   {
     date: {
       type: Date,
-      require: [true, 'Date is required'],
+      required: [true, 'Date is required'],
     },
     amount: {
       type: Number,
-      require: [true, 'Amount is required'],
+      required: [true, 'Amount is required'],
     },
     category: {
       type: String,
-      require: [true, 'Category is required'],
+      required: [true, 'Category is required'],
       enum: ['education', 'health', 'general', 'food', 'leisure', 'others'],
     },
     location: {

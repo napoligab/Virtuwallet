@@ -84,26 +84,28 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
     .catch((err) => console.log(err));
 }); 
 
-/* router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
-    router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
+  router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
         const {userId} = req.params;
         const user = req.session.user;
         User.findById(userId)
-          .then((user) => res.render('entries/edit-entry', user))
-          console.log('pagina encontrada')
-          .catch((err) => next(err));
+          .then((user) => {
+            console.log(user);
+            res.render('users/edit-user', user)
+          })
+          .catch((err) => console.log(err));
        });
-});
+
 
 router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
 
     const {userId} = req. params;
-    const { date, amount, category, location, type } = req.body;
+    const { email, firstName, lastName, password, entries,  } = req.body;
     const user = req.session.user;
    
-    Entry.findByIdAndUpdate(userId, {date, amount, category, location, type})
+    Entry.findByIdAndUpdate(userId, {email, firstName, lastName, password, entries})
+   .populate('entries')
    .then(() => res.redirect(`/dashboard/${user._id}`))
    .catch((err) => next(err));
- }); */
+ }); 
 
 module.exports = router;
