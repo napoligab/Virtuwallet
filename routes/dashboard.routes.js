@@ -22,15 +22,14 @@ router.get('/new-entry', isLoggedIn, (req, res, next) => {
 });
 
 router.post('/new-entry', isLoggedIn, (req, res, next) => {
-  const { date, amount, category, location, description, owner } = req.body;
+  const { date, amount, category, location, description } = req.body;
   const user = req.session.user;
-  Entry.create({ date, amount, category, location, description, owner })
+  Entry.create({ date, amount, category, location, description })
     .then((newEntry) => {
-      return User.findByIdAndUpdate(owner, {
+      User.findByIdAndUpdate(user._id, {
         $push: { entries: newEntry._id },
       });
     })
-    .then(() => console.log(newEntry))
     .then(() => res.redirect(`/dashboard/${user._id}`))
     .catch((err) => console.log('Error while creating an entry: ', err));
 });
