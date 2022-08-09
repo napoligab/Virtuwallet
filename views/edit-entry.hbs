@@ -1,7 +1,9 @@
+<h1>Edit Entry</h1>
+
 <form action="/edit-entry/{{_id}}" method='POST'>
 
   <label for='date'>Date:</label>
-  <input type='date' name='date' id='date' />
+  <input type='date' name='date' id='date' value="{{}}" />
 
   <label for='amount'>Amount:</label>
   <input type='number' name='amount' id='amount' />
@@ -13,7 +15,7 @@
   <input type='text' name='location' id='location' />
 
    <label for='type'>Type:</label>
-  <input type='text' name='type' id='type' />
+   <input type='text' name='type' id='type' />
 
 
   <button class="btn" type='submit'>Update Entry</button>

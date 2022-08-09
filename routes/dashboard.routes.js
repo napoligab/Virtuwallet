@@ -67,19 +67,22 @@ router.get('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
  const {entryId} = req.params;
  const user = req.session.user;
  Entry.findById(entryId)
-   .then((entry) => res.render('entries/edit-entry', entry))
-   .catch((err) => next(err));
+   .then((entry) => {
+    console.log(entry);
+    res.render('entries/edit-entry', entry)
+   })
+   .catch((err) => console.log(err));
 });
 
-router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
+/* router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
   const { entryId } = req.params;
   const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
 
   Entry.findByIdAndUpdate(entryId, { date, amount, category, location, type })
     .then(() => res.redirect(`/dashboard/${user._id}`))
-    .catch((err) => next(err));
-});
+    .catch((err) => console.log(err));
+}); */
 
 /* router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
     router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
