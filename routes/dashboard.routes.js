@@ -22,15 +22,30 @@ router.get('/new-entry', isLoggedIn, (req, res, next) => {
 });
 
 router.post('/new-entry', isLoggedIn, (req, res, next) => {
-  const { date, amount, category, location, description } = req.body;
+  const { date, amount, category, location, description, owner } = req.body;
   const user = req.session.user;
-  Entry.create({ date, amount, category, location, description })
+  Entry.create({ date, amount, category, location, description, owner })
     .then((newEntry) => {
-      console.log(newEntry);
-      res.redirect(`/dashboard/${user._id}`);
+      return User.findByIdAndUpdate(owner, {
+        $push: { entries: newEntry._id },
+      });
     })
+    .then(() => console.log(newEntry))
+    .then(() => res.redirect(`/dashboard/${user._id}`))
     .catch((err) => console.log('Error while creating an entry: ', err));
 });
+
+// router.post('/post-create', (req, res, next) => {
+//   const { title, content, author } = req.body;
+
+//   Post.create({ title, content, author })
+//     .then((newPost) => {
+//       return User.findByIdAndUpdate(author, { $push: { posts: newPost._id } });
+//     })
+//     .then(() => res.redirect('/posts'))
+//     .catch((err) => next(err));
+// });
+
 /* 
 movieRouter.post('/', (req, res, next) => {
     Movie.create(req.body)
