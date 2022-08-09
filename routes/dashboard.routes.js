@@ -58,11 +58,11 @@ movieRouter.post('/', (req, res, next) => {
     .catch( err => console.log("Error while creating a movie: ", err))
   }) */
 
-router.get('/edit-entry', isLoggedIn, (req, res, next) => {
+router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
   res.render('entries/edit-entry');
 });
 
-/* router.post("/new-entry", isLoggedIn, (req, res, next) => {
+/* router.post("/new-entry/:userId", isLoggedIn, (req, res, next) => {
     Entry.create({})
 }) */
 
