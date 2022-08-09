@@ -1,8 +1,9 @@
 <nav class='nav-bar'>
   <div class='div-logo'>
-    <img class='logo' src='/images/inverse.png' />
+    <img class='logo' src='{{data.user.profilePic}}' />
+
     <h1 class='head'>Welcome
-      <a href='/edit-user/{{_id}}'>{{data.user.firstName}}</a></h1>
+      <a href='/edit-user/{{data.user._id}}'>{{data.user.firstName}}</a></h1>
   </div>
   <div class='btn-home'>
     <button> <a href='/logout'>Logout</a></button>
@@ -24,16 +25,3 @@
   </button>
 
 {{/each}}
-
-<h3>User info</h3>
-<p>{{this.data.user}}</p>
-<p>{{this.data.budget}}</p>
-<p>{{this.data.income}}</p>
-<p>{{this.data.expense}}</p>
-
-{{! const data = {
-        user, 
-        budget,
-        income,
-        expense
-      } }}

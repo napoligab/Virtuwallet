@@ -119,18 +119,17 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
   const { entryId } = req.params;
   const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
-
-  if (type === "income") {
-    Entry.findByIdAndUpdate(entryId, { date, amount, category, location, type }, {new: true})
-      .then(() => res.redirect(`/dashboard/${user._id}`))
-      .catch((err) => console.log(err));
-  } 
-  if (type === "expense") {
-    Entry.findByIdAndUpdate(entryId, { date, amount: amount * -1, category, location, type }, {new: true})
-      .then(() => res.redirect(`/dashboard/${user._id}`))
-      .catch((err) => console.log(err));
+  
+  
+    let amountToUpdate = Math.abs(amount);
+    if (type === 'expense') {
+     amountToUpdate *= -1;
     }
-   }); 
+    Entry.findByIdAndUpdate(entryId, { date, amount: amountToUpdate, category, location, type }, {new: true})
+      .then(() => res.redirect(`/dashboard/${user._id}`))
+      .catch((err) => console.log(err));
+     });
+       
 
    router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
    const {entryId} = req.params;
@@ -155,20 +154,15 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
 
 
 router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
-  const { userId } = req.params;
-  const { email, firstName, lastName, password, entries } = req.body;
-  const user = req.session.user;
 
-  Entry.findByIdAndUpdate(userId, {
-    email,
-    firstName,
-    lastName,
-    password,
-    entries,
-  })
-    .populate('entries')
-    .then(() => res.redirect(`/dashboard/${user._id}`))
-    .catch((err) => next(err));
-});
+    const {userId} = req. params;
+    const { email, firstName, lastName} = req.body;
+    const user = req.session.user;
+    
+    User.findByIdAndUpdate(userId, {email, firstName, lastName})
+   .then(() => res.redirect(`/dashboard/${user._id}`))
+   .catch((err) => next(err));
+ }); 
+
 
 module.exports = router;
