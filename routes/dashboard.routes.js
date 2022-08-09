@@ -10,8 +10,27 @@ router.get('/dashboard/:userId', isLoggedIn, (req, res, next) => {
   User.findById(userId)
     .populate('entries')
     .then((user) => {
+      const budget = user.entries.reduce((a, b) => {
+        return a + b.amount;
+      }, 0)
+
+      const income = user.entries.map((el) => {
+        if(el.type === "income") return el;
+      })
+
+      const expense = user.entries.map((el) => {
+        if(el.type === "expense") return el;
+      })
+
+      const data = {
+        user, 
+        budget,
+        income,
+        expense
+      }
+
       console.log(user);
-      res.render('dashboard', user);
+      res.render('dashboard', {data});
     })
     .catch((err) => next(err));
 });
@@ -24,7 +43,10 @@ router.get('/new-entry', isLoggedIn, (req, res, next) => {
 router.post('/new-entry', isLoggedIn, (req, res, next) => {
   const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
-  Entry.create({ date, amount, category, location, type })
+
+  if (type === "income") {
+
+    Entry.create({ date, amount, category, location, type })
     .then((newEntry) => {
       return User.findByIdAndUpdate(
         user._id,
@@ -32,12 +54,30 @@ router.post('/new-entry', isLoggedIn, (req, res, next) => {
           $push: { entries: newEntry._id },
         },
         { new: true }
-      );
-    })
-    .then((user) => {
-      res.redirect(`/dashboard/${user._id}`);
-    })
-    .catch((err) => console.log('Error while creating an entry: ', err));
+        );
+      })
+      .then((user) => {
+        res.redirect(`/dashboard/${user._id}`);
+      })
+      .catch((err) => console.log('Error while creating an entry: ', err));
+    
+    }
+    if (type === "expense") {
+Entry.create({ date, amount: amount * -1, category, location, type })
+    .then((newEntry) => {
+      return User.findByIdAndUpdate(
+        user._id,
+        {
+          $push: { entries: newEntry._id },
+        },
+        { new: true }
+        );
+      })
+      .then((user) => {
+        res.redirect(`/dashboard/${user._id}`);
+      })
+      .catch((err) => console.log('Error while creating an entry: ', err));
+    }
 });
 
 // router.post('/post-create', (req, res, next) => {
@@ -79,9 +119,17 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
   const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
 
-  Entry.findByIdAndUpdate(entryId, { date, amount, category, location, type }, {new: true})
-    .then(() => res.redirect(`/dashboard/${user._id}`))
-    .catch((err) => console.log(err));
+  if (type === "income") {
+    Entry.findByIdAndUpdate(entryId, { date, amount, category, location, type }, {new: true})
+      .then(() => res.redirect(`/dashboard/${user._id}`))
+      .catch((err) => console.log(err));
+  } 
+  if (type === "expense") {
+    Entry.findByIdAndUpdate(entryId, { date, amount: amount * -1, category, location, type }, {new: true})
+      .then(() => res.redirect(`/dashboard/${user._id}`))
+      .catch((err) => console.log(err));
+  }
+
 }); 
 
   router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {

@@ -4,7 +4,9 @@
 
 <button class="btn"><a href="/new-entry"> Add entry</a> </button>
 
-{{#each entries}}
+
+<h1>Balance: {{data.budget}} </h1>
+{{#each data.user.entries}}
 <p>{{this.date}} </p>
 <p>{{this.amount}} </p>
 <p>{{this.category}} </p>
