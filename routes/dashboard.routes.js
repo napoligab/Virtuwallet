@@ -123,22 +123,31 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
     Entry.findByIdAndUpdate(entryId, { date, amount, category, location, type }, {new: true})
       .then(() => res.redirect(`/dashboard/${user._id}`))
       .catch((err) => console.log(err));
-  } 
+   } 
   if (type === "expense") {
     Entry.findByIdAndUpdate(entryId, { date, amount: amount * -1, category, location, type }, {new: true})
       .then(() => res.redirect(`/dashboard/${user._id}`))
       .catch((err) => console.log(err));
-  }
+    }
+   }); 
 
-}); 
+   router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
+   const {entryId} = req.params;
+   const  { date, amount, category, location, type } = req.body;
+   const user = req.session.user;
+   Entry.findByIdAndDelete(entryId)
+   .then(()res.redirect(`/dashboard/${user._id}`))
+   .catch((err) => console.log(err));
+
+  })
 
   router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
         const {userId} = req.params;
         const user = req.session.user;
         User.findById(userId)
-          .then((user) => {
+          .then((userObj) => {
             console.log(user);
-            res.render('users/edit-user', user)
+            res.render('users/edit-user', userObj)
           })
           .catch((err) => console.log(err));
        });
