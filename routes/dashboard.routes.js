@@ -62,7 +62,6 @@ router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
  const user = req.session.user;
  User.findById(userId)
    .then((user) => res.render('entries/edit-entry', user))
-   console.log('pagina encontrada')
    .catch((err) => next(err));
 });
 
