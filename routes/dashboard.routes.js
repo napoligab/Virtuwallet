@@ -119,31 +119,16 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
   const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
   
-
-<<<<<<< HEAD
   
     let amountToUpdate = Math.abs(amount);
     if (type === 'expense') {
      amountToUpdate *= -1;
-=======
-  if (type === "income") {
-    Entry.findByIdAndUpdate(entryId, { date, amount, category, location, type }, {new: true})
-      .then(() => res.redirect(`/dashboard/${user._id}`))
-      .catch((err) => console.log(err));
-  } 
-  if (type === "expense") {
-    Entry.findByIdAndUpdate(entryId, { date, amount: amount * -1, category, location, type }, {new: true})
-      .then(() => res.redirect(`/dashboard/${user._id}`))
-      .catch((err) => console.log(err));
->>>>>>> ff98b9e2ed3c5369da9993993b02c67c83c9d075
     }
     Entry.findByIdAndUpdate(entryId, { date, amount: amountToUpdate, category, location, type }, {new: true})
-      .then((updatedEntry) => {
-        console.log(updatedEntry)
-        res.redirect(`/dashboard/${user._id}`)
-      })
-       .catch((err) => console.log(err));
-      }); 
+      .then(() => res.redirect(`/dashboard/${user._id}`))
+      .catch((err) => console.log(err));
+     });
+       
 
    router.get('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
    const {entryId} = req.params;
@@ -167,7 +152,7 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
 
 
 router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
-<<<<<<< HEAD
+
     const {userId} = req. params;
     const { email, firstName, lastName} = req.body;
     const user = req.session.user;
@@ -176,22 +161,6 @@ router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
    .then(() => res.redirect(`/dashboard/${user._id}`))
    .catch((err) => next(err));
  }); 
-=======
-  const { userId } = req.params;
-  const { email, firstName, lastName, password, entries } = req.body;
-  const user = req.session.user;
 
-  Entry.findByIdAndUpdate(userId, {
-    email,
-    firstName,
-    lastName,
-    password,
-    entries,
-  })
-    .populate('entries')
-    .then(() => res.redirect(`/dashboard/${user._id}`))
-    .catch((err) => next(err));
-});
->>>>>>> ff98b9e2ed3c5369da9993993b02c67c83c9d075
 
 module.exports = router;
