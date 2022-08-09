@@ -63,27 +63,20 @@ movieRouter.post('/', (req, res, next) => {
     .catch( err => console.log("Error while creating a movie: ", err))
   }) */
 
-router.get('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
-<<<<<<< HEAD
- const {userId} = req.params;
+router.get('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
+ const {entryId} = req.params;
  const user = req.session.user;
- User.findById(userId)
-   .then((user) => res.render('entries/edit-entry', user))
+ Entry.findById(entryId)
+   .then((entry) => res.render('entries/edit-entry', entry))
    .catch((err) => next(err));
-=======
-  const { userId } = req.params;
-  const user = req.session.user;
-  User.findById(userId).then((user) => res.render('entries/edit-entry', user));
-  console.log('pagina encontrada').catch((err) => next(err));
->>>>>>> 1b8c8919212b174fd141593da2fdea816467ab3b
 });
 
-router.post('/edit-entry/:userId', isLoggedIn, (req, res, next) => {
-  const { userId } = req.params;
+router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
+  const { entryId } = req.params;
   const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
 
-  Entry.findByIdAndUpdate(userId, { date, amount, category, location, type })
+  Entry.findByIdAndUpdate(entryId, { date, amount, category, location, type })
     .then(() => res.redirect(`/dashboard/${user._id}`))
     .catch((err) => next(err));
 });
