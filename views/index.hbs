@@ -1,14 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{appTitle}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    
+  {{!-- <img class="logo-back" src="/public/images/favicon.ico" />   --}}
 
-<nav>
-<img src="/images/logo_piggy.png" /> 
-</nav>
+ <nav class="nav-bar"> 
+ <div class="div-logo">   
+  <img class="logo" src="/images/inverse.png" /> 
+ </div> 
+   <div class="btn-home">
+    <button class="btn"> <a href='/signup'>Signup</a></button>
+    <button class="btn"> <a href='/login'>Login</a></button>
+   </div>
+</nav> 
 
-<section class="btn-home">
-    <button> <a href='/signup'>Signup</a></button>
-    <button> <a href='/login'>Login</a></button>
-    <button> <a href='/logout'>Logout</a></button>
-    <button> <a href='/dashboard'>Dashboard</a></button>
-</section>
 
+ {{!--    <button> <a href='/signup'>Signup</a></button>
+    <button> <a href='/login'>Login</a></button> --}}
+    <button class="btn"> <a href='/logout'>Logout</a></button>
+    <button class="btn"> <a href='/dashboard'>Dashboard</a></button>
+
+</body>
+</html>
 
 

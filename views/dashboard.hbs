@@ -5,8 +5,11 @@
 <button><a href="/new-entry"> Add entry</a> </button>
 
 {{#each entries}}
-<p>{{this}} </p>
-
+<p>{{this.date}} </p>
+<p>{{this.amount}} </p>
+<p>{{this.category}} </p>
+<p>{{this.location}} </p>
+<p>{{this.type}} </p>
 
 {{/each}}
 

@@ -1,12 +1,54 @@
 body {
-  padding: 50px;
+  /* background-image: url('/images/favicon.ico'); */
+
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
 }
 
 a {
-  color: #00b7ff;
+  color: #f3f7f9;
+ 
 }
 
 h1 {
   color: 15px;
 }
+
+.nav-bar {
+  background-color: rgb(11, 11, 67);
+  height: 15vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.logo {
+  display: flex ;
+  height: 8vh;
+  align-self: center;
+}
+
+.div-logo {
+  display: flex;
+  justify-content: start;
+
+}
+
+.btn-home {
+  display: flex;
+  justify-content: end;
+  height: 30px;
+  width: 50px;
+
+}
+
+.btn {
+  background-color: rgb(27, 27, 143);
+  border: none;
+  font-style: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+}
+
+
