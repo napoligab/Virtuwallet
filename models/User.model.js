@@ -22,6 +22,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    profilePic: {
+      type: String,
+      default: "/images/inverse.png"
+    },
     entries: [{ type: Schema.Types.ObjectId, ref: 'Entry' }],
   },
   {
