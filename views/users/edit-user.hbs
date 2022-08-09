@@ -1,6 +1,6 @@
 
 
-<form action='/edit-user/{{_id}}' method='POST'>
+<form action="/edit-user/{{_id}}" method='POST'>
 
   <label for='firstName'>First Name:</label>
   <input type='text' name='firstName' id='firstName' value="{{this.firstName}}" />
@@ -14,15 +14,8 @@
   <label for='password'>Password:</label>
   <input type='password' name='password' id='password' value="{{this.password}}" />
 
-  <label for='profilePic'>Profile Picture:</label>
-  <input type="file" >
+ {{!--  <label for='profilePic'>Profile Picture:</label>
+  <input type="file" > --}}
 
   <button class="btn" type='submit'>Update User</button>
 
-  if (this.type === 'expense') {
-    this.amount = this.amount * (-1);
-  }
-
-  if (this.type === 'income') {
-    this.amount = this.amount;
-  }
