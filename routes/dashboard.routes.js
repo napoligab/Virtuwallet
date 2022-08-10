@@ -110,7 +110,6 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
 
 router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
   const { entryId } = req.params;
-  const { date, amount, category, location, type } = req.body;
   const user = req.session.user;
   Entry.findByIdAndDelete(entryId)
     .then(() => res.redirect(`/dashboard/${user._id}`))

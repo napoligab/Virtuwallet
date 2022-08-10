@@ -21,6 +21,7 @@ const entrySchema = new Schema(
     type: {
       type: String,
       enum: ['income', 'expense'],
+      required: true,
     },
   },
   {

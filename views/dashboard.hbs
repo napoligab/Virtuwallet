@@ -26,12 +26,12 @@
     
     <div class="dashboard">
 
-       <div class='chartjs'>
+       <div class='container'>
        <canvas id='myChart'></canvas>
        </div>
 
     <div class="entries">
-    <button class='btn'><a href='/new-entry'> Add entry</a> </button>
+    <button class='btn btn-entry'><a href='/new-entry'> Add entry</a> </button>
 
     
     {{#each data.user.entries}}
@@ -41,16 +41,12 @@
       <p>{{this.location}} </p>
       <p>{{this.type}} </p>
 
-      <button class='btn'><a href='/edit-entry/{{_id}}'> Edit entry</a>
-      </button>
-      <button class='btn'><a href='/delete-entry/{{_id}}'> Delete entry</a>
-      </button>
-
+      <button class='btn btn-entry'><a href='/edit-entry/{{_id}}'> Edit entry</a></button>
+      <button class='btn btn-entry'></button><a href='/delete-entry/{{_id}}'> Delete entry</a></button>
+      
     {{/each}}
 
-    <div class='container'>
-      <canvas id='myChart'></canvas>
-    </div>
+     </div>
 
     <script>
       let myChart = document.getElementById('myChart').getContext('2d'); let

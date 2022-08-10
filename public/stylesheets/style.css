@@ -2,8 +2,7 @@ body {
   background-image: url('/images/logo_piggy.png');
   background-repeat: no-repeat;
   background-size: auto;
-  background-position: center;
-  
+  background-position: center; 
 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
@@ -73,13 +72,23 @@ h2 {
 
 .dashboard {
   display: flex;
-  ;
+  justify-content: space-around;
 }
 
 .entries {
   display: flex;
-  flex-direction: row;
-  width: 50vw;
- 
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 40vw;
+  overflow-y: auto;
+  height: 80vh;
+  margin-right: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  width: 40vw;
 }
 
