@@ -1,19 +1,30 @@
 body {
-  /* background-image: url('/images/favicon.ico'); */
+  background-image: url('/images/logo_piggy.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  
 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
 }
 
 a {
-  color: #f3f7f9;
+  color: bisque;
+  text-decoration: none;
  
 }
 
 h1 {
-  color: 15px;
+  margin-left: 40px;
+  color: white;
 }
 
+h2 {
+  color: white;
+  margin-top: 10vh;
+  margin-left: 55vw; 
+}
 .nav-bar {
   background-color: rgb(11, 11, 67);
   height: 15vh;
@@ -25,34 +36,50 @@ h1 {
 
 .logo {
   display: flex ;
-  height: 8vh;
+  height: 10vh;
   align-self: center;
 }
 
 .div-logo {
   display: flex;
   justify-content: start;
+  margin-left: 30px;
 
 }
 
 .btn-home {
   display: flex;
   justify-content: end;
-  height: 30px;
-  width: 50px;
+  align-self: center;
+  height: 40px;
+  width: 60px;
+  margin-right: 30px;
 
 }
 
 .btn {
-  background-color: rgb(27, 27, 143);
-  border: none;
-  font-style: none;
+  background-color: rgb(11, 11, 67);
+  border: 1px solid bisque;
+  border-radius: 15px;
+  margin: 5px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .head {
   color: white
 }
 
+
+.dashboard {
+  display: flex;
+  ;
+}
+
+.entries {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+ 
+}
 

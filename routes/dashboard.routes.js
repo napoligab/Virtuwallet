@@ -129,13 +129,20 @@ router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
        });
 
 
-  router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
+  router.post('/edit-user/:userId', isLoggedIn, fileUploader.single('profilePic'), (req, res, next) => {
 
     const {userId} = req. params;
-    const { email, firstName, lastName} = req.body;
+    const { email, firstName, lastName, existingImage} = req.body;
     const user = req.session.user;
+
+    let profilePic
+    if (!req.file) {
+      profilePic = profilePic;
+    } else {
+      profilePic = req.file.path;
+    }
     
-    User.findByIdAndUpdate(userId, {email, firstName, lastName})
+    User.findByIdAndUpdate(userId, {email, firstName, lastName, profilePic}, {new: true})
    .then(() => res.redirect(`/dashboard/${user._id}`))
    .catch((err) => next(err));
   }); 

@@ -12,22 +12,31 @@
       <div class='div-logo'>
         <img class='logo' src='{{data.user.profilePic}}' />
 
-        <h1 class='head'>Welcome
+        <h1 class='head'>Welcome 
           <a
             href='/edit-user/{{data.user._id}}'
           >{{data.user.firstName}}</a></h1>
       </div>
+      <h2>Balance: {{data.budget}}€ </h2>
+
       <div class='btn-home'>
-        <button> <a href='/logout'>Logout</a></button>
+        <button class='btn'> <a href='/logout'>Logout</a></button>
       </div>
     </nav>
+    
+    <div class="dashboard">
 
+       <div class='chartjs'>
+       <canvas id='myChart'></canvas>
+       </div>
+
+    <div class="entries">
     <button class='btn'><a href='/new-entry'> Add entry</a> </button>
 
-    <h1>Balance: {{data.budget}} </h1>
+    
     {{#each data.user.entries}}
       <p>{{this.date}} </p>
-      <p>{{this.amount}} </p>
+      <p>{{this.amount}}€ </p>
       <p>{{this.category}} </p>
       <p>{{this.location}} </p>
       <p>{{this.type}} </p>
@@ -38,9 +47,8 @@
       </button>
 
     {{/each}}
-
-    <div class='chartjs'>
-      <canvas id='myChart'></canvas>
+    
+     </div>
     </div>
 
     <script>
