@@ -17,6 +17,7 @@ router.get('/dashboard/:userId', isLoggedIn, (req, res, next) => {
         if(el.type === "income") return el;
       })
 
+
       const expense = user.entries.map((el) => {
         if(el.type === "expense") return el;
       })
@@ -106,11 +107,12 @@ router.post('/new-entry', isLoggedIn, (req, res, next) => {
      });
        
 
-   router.get('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
+   router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
    const {entryId} = req.params;
+   const  { date, amount, category, location, type } = req.body;
    const user = req.session.user;
    Entry.findByIdAndDelete(entryId)
-   .then(() => res.redirect(`/dashboard/${user._id}`))
+   .then(()res.redirect(`/dashboard/${user._id}`))
    .catch((err) => console.log(err));
 
   })

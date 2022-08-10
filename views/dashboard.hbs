@@ -1,27 +1,27 @@
+<nav class='nav-bar'>
+  <div class='div-logo'>
+    <img class='logo' src='{{data.user.profilePic}}' />
 
- <nav class="nav-bar"> 
- <div class="div-logo">   
-  <img class="logo" src="{{data.user.profilePic}}" /> 
-
-  <h1 class="head">Welcome <a href='/edit-user/{{data.user._id}}'>{{data.user.firstName}}</a></h1>
- </div> 
-   <div class="btn-home">
+    <h1 class='head'>Welcome
+      <a href='/edit-user/{{data.user._id}}'>{{data.user.firstName}}</a></h1>
+  </div>
+  <div class='btn-home'>
     <button> <a href='/logout'>Logout</a></button>
-   </div>
-</nav> 
+  </div>
+</nav>
 
-<button class="btn"><a href="/new-entry"> Add entry</a> </button>
-
+<button class='btn'><a href='/new-entry'> Add entry</a> </button>
 
 <h1>Balance: {{data.budget}} </h1>
 {{#each data.user.entries}}
-<p>{{this.date}} </p>
-<p>{{this.amount}} </p>
-<p>{{this.category}} </p>
-<p>{{this.location}} </p>
-<p>{{this.type}} </p>
+  <p>{{this.date}} </p>
+  <p>{{this.amount}} </p>
+  <p>{{this.category}} </p>
+  <p>{{this.location}} </p>
+  <p>{{this.type}} </p>
 
-<button class="btn"><a href="/edit-entry/{{_id}}"> Edit entry</a> </button>
-<button class="btn"><a href="/delete-entry/{{_id}}"> Delete entry</a> </button>
+  <button class='btn'><a href='/edit-entry/{{_id}}'> Edit entry</a> </button>
+  <button class='btn'><a href='/delete-entry/{{_id}}'> Delete entry</a>
+  </button>
 
 {{/each}}
