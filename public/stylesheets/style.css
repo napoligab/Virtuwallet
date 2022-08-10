@@ -92,3 +92,20 @@ h2 {
   width: 40vw;
 }
 
+.btn-user {
+  background-color: rgb(11, 11, 67);
+  border: 1px solid bisque;
+  border-radius: 15px;
+  margin: 5px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
+}
+
+.btn-entries {
+  background-color: rgb(11, 11, 67);
+  border: 1px solid bisque;
+  border-radius: 15px;
+  margin: 5px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
+}

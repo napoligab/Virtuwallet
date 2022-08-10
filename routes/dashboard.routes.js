@@ -108,13 +108,15 @@ router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
-  const { entryId } = req.params;
+  router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
+  const {entryId} = req.params;
+  const  { date, amount, category, location, type } = req.body;
   const user = req.session.user;
   Entry.findByIdAndDelete(entryId)
-    .then(() => res.redirect(`/dashboard/${user._id}`))
-    .catch((err) => console.log(err));
-});
+  .then(() => res.redirect(`/dashboard/${user._id}`))
+  .catch((err) => console.log(err));
+
+  })
 
   router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
         const {userId} = req.params;
