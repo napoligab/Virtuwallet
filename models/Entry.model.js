@@ -21,6 +21,7 @@ const entrySchema = new Schema(
         'food',
         'leisure',
         'salary',
+        'bills',
         'others',
       ],
     },
