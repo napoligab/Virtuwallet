@@ -130,7 +130,7 @@ router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
   const { userId } = req.params;
   const { email, firstName, lastName } = req.body;
   const user = req.session.user;
-<<<<<<< HEAD
+
    Entry.findById(entryId)
    .then((entry) => {
     console.log(entry);
@@ -186,17 +186,5 @@ router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
    .then(() => res.redirect(`/dashboard/${user._id}`))
    .catch((err) => next(err));
   }); 
-=======
->>>>>>> 5cfa68704593a8a725802bb1d0c187d84a209a28
-
-  User.findByIdAndUpdate(userId, { email, firstName, lastName })
-    .then(() => res.redirect(`/dashboard/${user._id}`))
-    .catch((err) => next(err));
-});
 
 module.exports = router;
-
-<<<<<<< HEAD
-=======
-//a
->>>>>>> 5cfa68704593a8a725802bb1d0c187d84a209a28
