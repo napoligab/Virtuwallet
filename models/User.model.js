@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const capitalized = require('../utils/capitalized');
 
 const userSchema = new Schema(
   {
@@ -12,11 +13,13 @@ const userSchema = new Schema(
       type: String,
       trim: true,
       required: true,
+      set: capitalized,
     },
     lastName: {
       type: String,
       trim: true,
       required: true,
+      set: capitalized,
     },
     password: {
       type: String,
@@ -24,7 +27,7 @@ const userSchema = new Schema(
     },
     profilePic: {
       type: String,
-      default: "/images/inverse.png"
+      default: '/images/inverse.png',
     },
     entries: [{ type: Schema.Types.ObjectId, ref: 'Entry' }],
   },

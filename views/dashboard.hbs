@@ -24,6 +24,24 @@
       </div>
     </nav>
     
+
+  <form action="/dashboard/{{data.user._id}}/filter" method="get">
+  <label for="startDate">From:</label>
+    <input type="date" name="startDate" id="startDate">
+
+  <label for="endDate">To:</label>
+    <input type="date" name="endDate" id="endDate">
+
+    <label for="category">Category</label>
+    <select name="category" id="category">
+      <option value="all">All</option>
+      <option value="education">Education</option>
+      <option value="education">general</option>
+    </select>
+
+    <button type="submit">Filter</button>
+  </form>
+
     <div class="dashboard">
 
        <div class='container'>
@@ -34,7 +52,7 @@
     <button class='btn btn-entry'><a href='/new-entry'> Add entry</a> </button>
 
     
-    {{#each data.user.entries}}
+    {{#each data.entries}}
       <p>{{this.date}} </p>
       <p>{{this.amount}}€ </p>
       <p>{{this.category}} </p>
@@ -45,6 +63,7 @@
       <button class='btn btn-entry'><a href='/delete-entry/{{_id}}'> Delete entry</a></button>
       
     {{/each}}
+
 
      </div>
 
