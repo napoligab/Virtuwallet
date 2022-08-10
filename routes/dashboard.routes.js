@@ -2,6 +2,8 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 const router = require('express').Router();
 const User = require('../models/User.model');
 const Entry = require('../models/Entry.model');
+const fileUploader = require('../config/cloudinary.config');
+
 
 router.get('/dashboard/:userId', isLoggedIn, (req, res, next) => {
   const { userId } = req.params;
@@ -114,55 +116,6 @@ router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
     .then(() => res.redirect(`/dashboard/${user._id}`))
     .catch((err) => console.log(err));
 });
-
-router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
-  const { userId } = req.params;
-  const user = req.session.user;
-  User.findById(userId)
-    .then((userObj) => {
-      console.log(user);
-      res.render('users/edit-user', userObj);
-    })
-    .catch((err) => console.log(err));
-});
-
-router.post('/edit-user/:userId', isLoggedIn, (req, res, next) => {
-  const { userId } = req.params;
-  const { email, firstName, lastName } = req.body;
-  const user = req.session.user;
-
-   Entry.findById(entryId)
-   .then((entry) => {
-    console.log(entry);
-    res.render('entries/edit-entry', entry)
-   })
-   .catch((err) => console.log(err));
-  });
-
-   router.post('/edit-entry/:entryId', isLoggedIn, (req, res, next) => {
-   const { entryId } = req.params;
-   const { date, amount, category, location, type } = req.body;
-   const user = req.session.user;
-  
-    let amountToUpdate = Math.abs(amount);
-    if (type === 'expense') {
-     amountToUpdate *= -1;
-    }
-    Entry.findByIdAndUpdate(entryId, { date, amount: amountToUpdate, category, location, type }, {new: true})
-      .then(() => res.redirect(`/dashboard/${user._id}`))
-      .catch((err) => console.log(err));
-     });
-       
-
-   router.post('/delete-entry/:entryId', isLoggedIn, (req, res, next) => {
-   const {entryId} = req.params;
-   const  { date, amount, category, location, type } = req.body;
-   const user = req.session.user;
-   Entry.findByIdAndDelete(entryId)
-   .then(() => res.redirect(`/dashboard/${user._id}`))
-   .catch((err) => console.log(err));
-
-  })
 
   router.get('/edit-user/:userId', isLoggedIn, (req, res, next) => {
         const {userId} = req.params;
