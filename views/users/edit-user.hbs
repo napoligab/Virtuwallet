@@ -1,6 +1,6 @@
 
 
-<form action="/edit-user/{{_id}}" method='POST'>
+<form action="/edit-user/{{_id}}" enctype="multipart/form-data"method='POST'>
 
   <label for='firstName'>First Name:</label>
   <input type='text' name='firstName' id='firstName' value="{{this.firstName}}" />
@@ -11,8 +11,13 @@
   <label for='email'>Email:</label>
   <input type='email' name='email' id='email' value="{{this.email}}" />
 
- {{!--  <label for='profilePic'>Profile Picture:</label>
-  <input type="file" > --}}
 
-  <button class="btn" type='submit'>Update User</button>
+  <label for='profilePic'>Profile Picture:</label>
+  <input type="file" name="profilePic"/> 
+
+ <button class="btn" type='submit'>Update User</button>
+
+   </form>
+
+  
 

@@ -96,7 +96,6 @@ router.post('/new-entry', isLoggedIn, (req, res, next) => {
    const { date, amount, category, location, type } = req.body;
    const user = req.session.user;
   
-  
     let amountToUpdate = Math.abs(amount);
     if (type === 'expense') {
      amountToUpdate *= -1;
@@ -112,7 +111,7 @@ router.post('/new-entry', isLoggedIn, (req, res, next) => {
    const  { date, amount, category, location, type } = req.body;
    const user = req.session.user;
    Entry.findByIdAndDelete(entryId)
-   .then(()res.redirect(`/dashboard/${user._id}`))
+   .then(() => res.redirect(`/dashboard/${user._id}`))
    .catch((err) => console.log(err));
 
   })
@@ -143,4 +142,3 @@ router.post('/new-entry', isLoggedIn, (req, res, next) => {
 
 module.exports = router;
 
-//a
