@@ -39,16 +39,16 @@
 
     {{/each}}
 
-    <div class='chartjs'>
+    <div class='container'>
       <canvas id='myChart'></canvas>
     </div>
 
     <script>
-      const labels = [ 'January', 'February', 'March', 'April', 'May', 'June',
-      ]; const data = { labels: labels, datasets: [{ label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)', borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45], }] }; const config = { type: 'line',
-      data: data, options: {} };
+      let myChart = document.getElementById('myChart').getContext('2d'); let
+      popChart = new Chart(myChart, { type: 'bar', data: { labels:['Boston',
+      'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+      datasets:[{ label: 'Population', data: [617594, 181045, 153060, 106519,
+      105162, 95072], backgroundColor:'green' }] }, options:{} })
     </script>
 
     <script>
