@@ -13,7 +13,7 @@ const entrySchema = new Schema(
     category: {
       type: String,
       required: [true, 'Category is required'],
-      enum: ['education', 'health', 'general', 'food', 'leisure', 'others'],
+      enum: ['education', 'health', 'general', 'food', 'leisure', 'salary', 'others'],
     },
     location: {
       type: String,
