@@ -1,27 +1,47 @@
-<nav class='nav-bar'>
-  <div class='div-logo'>
-    <img class='logo' src='{{data.user.profilePic}}' />
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+    <title>Document</title>
+  </head>
+  <body>
 
-    <h1 class='head'>Welcome
-      <a href='/edit-user/{{data.user._id}}'>{{data.user.firstName}}</a></h1>
-  </div>
-  <div class='btn-home'>
-    <button> <a href='/logout'>Logout</a></button>
-  </div>
-</nav>
+    <nav class='nav-bar'>
+      <div class='div-logo'>
+        <img class='logo' src='{{data.user.profilePic}}' />
 
-<button class='btn'><a href='/new-entry'> Add entry</a> </button>
+        <h1 class='head'>Welcome
+          <a
+            href='/edit-user/{{data.user._id}}'
+          >{{data.user.firstName}}</a></h1>
+      </div>
+      <div class='btn-home'>
+        <button> <a href='/logout'>Logout</a></button>
+      </div>
+    </nav>
 
-<h1>Balance: {{data.budget}} </h1>
-{{#each data.user.entries}}
-  <p>{{this.date}} </p>
-  <p>{{this.amount}} </p>
-  <p>{{this.category}} </p>
-  <p>{{this.location}} </p>
-  <p>{{this.type}} </p>
+    <button class='btn'><a href='/new-entry'> Add entry</a> </button>
 
-  <button class='btn'><a href='/edit-entry/{{_id}}'> Edit entry</a> </button>
-  <button class='btn'><a href='/delete-entry/{{_id}}'> Delete entry</a>
-  </button>
+    <h1>Balance: {{data.budget}} </h1>
+    {{#each data.user.entries}}
+      <p>{{this.date}} </p>
+      <p>{{this.amount}} </p>
+      <p>{{this.category}} </p>
+      <p>{{this.location}} </p>
+      <p>{{this.type}} </p>
 
-{{/each}}
+      <button class='btn'><a href='/edit-entry/{{_id}}'> Edit entry</a>
+      </button>
+      <button class='btn'><a href='/delete-entry/{{_id}}'> Delete entry</a>
+      </button>
+
+    {{/each}}
+
+    <div class='chartjs'>
+      <canvas id='myChart'></canvas>
+    </div>
+
+  </body>
+</html>
