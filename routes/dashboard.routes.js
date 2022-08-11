@@ -41,14 +41,15 @@ router.get('/dashboard/:userId/filter', isLoggedIn, (req, res, next) => {
         return a + b.amount;
       }, 0);
 
-      const income = filteredEntries.map((el) => {
+      let income = filteredEntries.map((el) => {
         if (el.type === 'income') return el;
       });
 
-      const expense = filteredEntries.map((el) => {
+      let expense = filteredEntries.map((el) => {
         if (el.type === 'expense') return el;
       });
 
+    
       let entries = filteredEntries;
 
       const data = {
@@ -58,6 +59,7 @@ router.get('/dashboard/:userId/filter', isLoggedIn, (req, res, next) => {
         expense,
         entries,
       };
+
 
       console.log(filteredEntries);
       res.render('dashboard', { data });

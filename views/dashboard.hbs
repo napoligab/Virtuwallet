@@ -3,7 +3,7 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+    {{!-- <script src='https://cdn.jsdelivr.net/npm/chart.js'></script> --}}
     <title>Document</title>
   </head>
   <body>
@@ -24,53 +24,72 @@
       </div>
     </nav>
     
-
-  <form action="/dashboard/{{data.user._id}}/filter" method="get">
-  <label for="startDate">From:</label>
+    <div class="filter-btn">
+    <form class="filter" action="/dashboard/{{data.user._id}}/filter" method="get">
+    <label for="startDate">From:</label>
     <input type="date" name="startDate" id="startDate">
 
-  <label for="endDate">To:</label>
+    <label for="endDate">To:</label>
     <input type="date" name="endDate" id="endDate">
 
     <label for="category">Category</label>
     <select name="category" id="category">
       <option value="all">All</option>
       <option value="education">Education</option>
-      <option value="education">general</option>
+      <option value="general">General</option>
+      <option value="health">Health</option>
+      <option value="bills">Bills</option>
+      <option value="food">Food</option>
+      <option value="leisure">Leisure</option>
+      <option value="salary">Salary</option>
+      <option value="others">Others</option>
     </select>
 
-    <button type="submit">Filter</button>
-  </form>
+    <button class='btn btn-active' type="submit">Filter</button>
+    </form>
+     
+    <button class='btn'><a href='/new-entry'>Add entry</a></button>
 
-    <div class="dashboard">
+    </div>
+
+   {{!--  <div class="dashboard">
 
        <div class='container'>
        <canvas id='myChart'></canvas>
        </div>
-
-    <div class="entries">
-    <button class='btn btn-entry'><a href='/new-entry'> Add entry</a> </button>
-
-    
-    {{#each data.entries}}
-      <p>{{this.date}} </p>
-      <p>{{this.amount}}€ </p>
-      <p>{{this.category}} </p>
-      <p>{{this.location}} </p>
-      <p>{{this.type}} </p>
-
-      <button class='btn btn-entry'><a href='/edit-entry/{{_id}}'> Edit entry</a></button>
-      <button class='btn btn-entry'><a href='/delete-entry/{{_id}}'> Delete entry</a></button>
-      
-    {{/each}}
+       <div> --}}
 
 
      </div>
 
+    <div class="cards">
+    
+    {{#each data.entries}}
+      
+<div class="card w-96 bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title"></h2>
+    <p><b>Date:</b> {{this.date}} </p>
+      <p><b>Amount:</b> {{this.amount}}€ </p>
+      <p><b>Category:</b> {{this.category}} </p>
+      <p><b>Location:</b> {{this.location}} </p>
+      <p><b>Type:</b> {{this.type}} </p>
+     <div class="btn-group">
+        <button class='btn btn-active'><a href='/edit-entry/{{_id}}'> Edit entry</a></button>
+        <button class='btn'><a href='/delete-entry/{{_id}}'> Delete entry</a></button>
+      </div>
+  </div>
+</div>
+       
+    {{/each}}
+
+    </div>
+     </div>
+{{!-- 
     <script>
     
       let myChart = document.getElementById('myChart').getContext('2d'); let
-      popChart = new Chart(myChart, { type: 'bar', data: { labels:['Boston',
+      popChart = new Chart(myChart, { type: 'line', data: { labels:['Boston',
       'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
       datasets:[{ label: 'Population', data: [617594, 181045, 153060, 106519,
       105162, 95072], backgroundColor:'green' }] }, options:{} })
@@ -78,7 +97,7 @@
 
     <script>
       const myChart = new Chart( document.getElementById('myChart'), config );
-    </script>
+    </script> --}}
 
   </body>
 </html>

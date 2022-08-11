@@ -1,7 +1,7 @@
 
 <h1>Login</h1>
 
-<form action="/login" method="POST">
+<form class="login-form" action="/login" method="POST">
    <label> Email
       <input type="email" name="email" id="email">
    </label>
@@ -9,7 +9,7 @@
       <input type="password" name="password" id=" password">
    </label>
 
-   <button type="submit">Login</button>
+   <button class="btn btn-active" type="submit">Login</button>
 </form>
 
 {{#if errorMessage}}
