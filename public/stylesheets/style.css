@@ -109,7 +109,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; 
+  overflow-y: auto;
+  height: 100vh;  
 
 }
 
@@ -123,6 +124,5 @@ body {
 
 .balance {
   font-size: 25px;
-  font-family: 'Roboto', sans-serif;
 }
 
