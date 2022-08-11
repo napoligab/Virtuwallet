@@ -1,34 +1,31 @@
 body {
-  background-image: url('/images/logo_piggy.png');
-  background-repeat: no-repeat;
+  background-image: url('/images/inverse.png');
+  background-repeat:no-repeat;
   background-size: auto;
   background-position: center;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
-  background-color: rgb(11, 11, 67);
+  background-color: rgb(115, 147, 179);
   color: rgb(36, 36, 38);
+  font-family: 'Roboto', sans-serif;
 }
 
  a {
   text-decoration: none;
 }
 
-h1 {
-  margin-left: 40px;
-  color: white;
-}
-
-h2 {
-  color: white;
+ h2 {
+  color: rgb(62, 68, 80);
   margin-top: 10vh;
   margin-left: 55vw;
-}
+  font-size: 25px;
+} 
 .nav-bar {
-  background-color: rgb(78, 116, 78);
+  background-color:rgb(249, 246, 238);
   height: 15vh;
   width: 100vw;
   display: flex;
   justify-content: space-between;
   align-content: center;
+  align-items: center;
 }
 
 .logo {
@@ -52,7 +49,7 @@ h2 {
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: 550;
   color: #ffffff;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   text-align: center;
@@ -64,7 +61,9 @@ h2 {
 }
 
 .head {
-  color: white;
+  color: rgb(62, 68, 80);
+  margin-left: 60px;
+  font-size: 30px;
 }
 
 .dashboard {
@@ -85,30 +84,22 @@ h2 {
   border-radius: 15px;
 } */
 
-.container {
+/* .container {
   display: flex;
   justify-content: flex-start;
   width: 40vw;
   border: 1px solid black;
   border-radius: 15px;
-}
+} */
 
-.btn-user {
+/* .btn-user {
   background-color: rgb(11, 11, 67);
   border: 1px solid bisque;
   border-radius: 15px;
   margin: 5px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 15px;
-}
-
-.filter-btn {
- display: flex;
- flex-direction: column;
- align-content: flex-start;
- justify-content: right;
- align-items: flex-end;
-} 
+} */
 
 .shadow-xl {
   border: 1px solid black;
@@ -117,7 +108,21 @@ h2 {
 .cards {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  overflow-y: auto;
-  
+  align-items: center;
+  overflow-y: auto; 
+
 }
+
+.balance-add-entry {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+} 
+
+.balance {
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+

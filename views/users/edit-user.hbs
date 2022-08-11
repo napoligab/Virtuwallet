@@ -1,5 +1,5 @@
 
-
+<div>
 <form action="/edit-user/{{_id}}" enctype="multipart/form-data"method='POST'>
 
   <label for='firstName'>First Name:</label>
@@ -14,11 +14,11 @@
 
   <label for='profilePic'>Profile Picture:</label>
   <input type="file" name="profilePic"/> 
-  <input type="text" name="existingImage" value="{{profilePic}}">
+  <input type="text" name="existingImage" value="{{profilePic}}" hidden>
 
  <button class="btn" type='submit'>Update User</button>
 
    </form>
 
-  
+   </div>  
 

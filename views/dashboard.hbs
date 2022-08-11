@@ -8,23 +8,26 @@
   </head>
   <body>
 
-    <nav class='nav-bar'>
+     <nav class='nav-bar'>
       <div class='div-logo'>
         <img class='logo' src='{{data.user.profilePic}}' />
 
         <h1 class='head'>Welcome 
           <a
             href='/edit-user/{{data.user._id}}'
-          >{{data.user.firstName}}</a></h1>
-      </div>
-      <h2>Balance: {{data.budget}}€ </h2>
+          ><b>{{data.user.firstName}}</b></a></h1>
+      </div> 
+        <div class='btn-home'>
+          <button class='btn'> <a href='/logout'>Logout</a></button>
+        </div>
+      </nav> 
+      
 
-      <div class='btn-home'>
-        <button class='btn'> <a href='/logout'>Logout</a></button>
-      </div>
-    </nav>
-    
-    <div class="filter-btn">
+    <div class="balance-add-entry">
+
+      <button class='btn'><a href='/new-entry'>Add entry</a></button>
+       <p class="balance"><b>Balance: {{data.budget}}€ </b></p>
+       
     <form class="filter" action="/dashboard/{{data.user._id}}/filter" method="get">
     <label for="startDate">From:</label>
     <input type="date" name="startDate" id="startDate">
@@ -47,10 +50,37 @@
 
     <button class='btn btn-active' type="submit">Filter</button>
     </form>
-     
-    <button class='btn'><a href='/new-entry'>Add entry</a></button>
 
     </div>
+        
+
+    
+   {{!--  <div class="filter-btn">
+    <form class="filter" action="/dashboard/{{data.user._id}}/filter" method="get">
+    <label for="startDate">From:</label>
+    <input type="date" name="startDate" id="startDate">
+
+    <label for="endDate">To:</label>
+    <input type="date" name="endDate" id="endDate">
+
+    <label for="category">Category</label>
+    <select name="category" id="category">
+      <option value="all">All</option>
+      <option value="education">Education</option>
+      <option value="general">General</option>
+      <option value="health">Health</option>
+      <option value="bills">Bills</option>
+      <option value="food">Food</option>
+      <option value="leisure">Leisure</option>
+      <option value="salary">Salary</option>
+      <option value="others">Others</option>
+    </select>
+
+    <button class='btn btn-active' type="submit">Filter</button>
+    </form> --}}
+     
+
+    </div> 
 
    {{!--  <div class="dashboard">
 
