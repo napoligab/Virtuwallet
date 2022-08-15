@@ -18,6 +18,11 @@ h2 {
   margin-left: 55vw;
   font-size: 25px;
 }
+
+footer {
+  opacity: 0.7;
+}
+
 .nav-bar {
   background-color: rgb(249, 246, 238);
   height: 15vh;
